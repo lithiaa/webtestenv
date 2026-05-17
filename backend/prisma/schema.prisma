@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model Category {
+  id            Int      @id @default(autoincrement())
+  category_name String   @unique
+  description   String?
+  createdAt     DateTime @default(now())
+
+  items         Item[]
+}
+
+model Item {
+  id             Int      @id @default(autoincrement())
+  item_name      String
+
+  categoryId     Int?
+  category       Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+
+  stock_amount   Int
+  minimum_stock  Int?
+
+  selling_price  Float?
+  purchase_price Float?
+
+  weight_size    String?
+  unit           String
+
+  save_location  String?
+  description    String?
+  item_picture   String?
+
+  createdAt      DateTime @default(now())
+}
