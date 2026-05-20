@@ -53,7 +53,7 @@ type Category = {
 type Item = {
     id: number
     item_name: string
-    category_name?: string // BUG INJECTION
+    category_name?: string | null // BUG INJECTION
     categoryId?: number
     stock_amount: number
     unit: string
