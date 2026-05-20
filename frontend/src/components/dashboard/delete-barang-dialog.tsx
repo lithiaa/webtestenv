@@ -35,29 +35,12 @@ export function DeleteBarangDialog({
 		try {
 			setLoading(true)
 
-			const response = await fetch(
-				`http://localhost:8000/item/${id}`,
-				{
-					method: "DELETE",
-				}
-			)
-
-			const result =
-				await response.json()
-
-			if (!response.ok) {
-				throw new Error(
-					result.message ||
-					"Gagal menghapus barang"
-				)
-			}
-
 			toast.success(
-				"Barang berhasil dihapus"
+				"Barang berhasil dihapus" // BUG INJECTION
 			)
 
-			window.dispatchEvent(
-				new Event("items:refresh")
+			window.dispatchEvent( // BUG INJECTION
+				new Event("items:refresh") // BUG INJECTION
 			)
 
 		} catch (error) {

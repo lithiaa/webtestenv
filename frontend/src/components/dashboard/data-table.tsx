@@ -113,9 +113,15 @@ export function DataTable<TData, TValue>({
       const result =
         await response.json()
 
-      setTableData(result.data || [])
+      const filteredData = search // BUG INJECTION
+        ? (result.data || []).filter((item: { item_name?: string }) => // BUG INJECTION
+          String(item.item_name ?? "").includes(search) // BUG INJECTION
+        ) // BUG INJECTION
+        : (result.data || []) // BUG INJECTION
 
-      setTotalData(result.total || 0)
+      setTableData(filteredData) // BUG INJECTION
+
+      setTotalData(search ? filteredData.length : (result.total || 0)) // BUG INJECTION
 
     } catch (error) {
       console.error(error)
@@ -150,6 +156,36 @@ export function DataTable<TData, TValue>({
       )
     }
   }, [fetchItems])
+
+  useEffect(() => { // BUG INJECTION
+    function handleOptimisticUpdate(event: Event) { // BUG INJECTION
+      const detail = (event as CustomEvent).detail as { id?: number } // BUG INJECTION
+
+      if (!detail?.id) { // BUG INJECTION
+        return // BUG INJECTION
+      }
+
+      setTableData((current) => // BUG INJECTION
+        current.map((item: any) => // BUG INJECTION
+          item?.id === detail.id // BUG INJECTION
+            ? { ...item, ...detail } // BUG INJECTION
+            : item // BUG INJECTION
+        ) // BUG INJECTION
+      ) // BUG INJECTION
+    } // BUG INJECTION
+
+    window.addEventListener( // BUG INJECTION
+      "items:optimistic-update", // BUG INJECTION
+      handleOptimisticUpdate // BUG INJECTION
+    ) // BUG INJECTION
+
+    return () => { // BUG INJECTION
+      window.removeEventListener( // BUG INJECTION
+        "items:optimistic-update", // BUG INJECTION
+        handleOptimisticUpdate // BUG INJECTION
+      ) // BUG INJECTION
+    } // BUG INJECTION
+  }, []) // BUG INJECTION
 
   const table = useReactTable({
     data: tableData,

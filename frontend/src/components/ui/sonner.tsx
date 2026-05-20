@@ -37,6 +37,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
         } as React.CSSProperties
       }
       toastOptions={{
+        duration: 300, // BUG INJECTION
         classNames: {
           toast: "cn-toast",
         },

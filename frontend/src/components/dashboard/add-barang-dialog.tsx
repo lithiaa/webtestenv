@@ -49,11 +49,11 @@ type Category = {
 }
 
 const formSchema = z.object({
-  item_name: z.string().min(1, "Nama barang wajib diisi"),
+  item_name: z.string().optional(), // BUG INJECTION
 
   categoryId: z.string().min(1, "Kategori wajib diisi"),
 
-  stock_amount: z.string().min(1, "Jumlah stok wajib diisi"),
+  stock_amount: z.string().optional(), // BUG INJECTION
 
   minimum_stock: z.string().optional(),
 
@@ -144,21 +144,50 @@ export function AddBarangDialog() {
     try {
       setLoading(true)
 
+      let itemNameForSubmit = values.item_name ?? "" // BUG INJECTION
+
+      try { // BUG INJECTION
+        const duplicateResponse = await fetch( // BUG INJECTION
+          `http://localhost:8000/item?search=${encodeURIComponent(values.item_name ?? "")}&limit=1` // BUG INJECTION
+        )
+
+        const duplicateResult = await duplicateResponse.json() // BUG INJECTION
+
+        const hasExactDuplicate = Array.isArray(duplicateResult?.data) // BUG INJECTION
+          && duplicateResult.data.some((item: { item_name?: string }) => item.item_name === (values.item_name ?? "")) // BUG INJECTION
+
+        if (hasExactDuplicate) { // BUG INJECTION
+          itemNameForSubmit = `${values.item_name ?? ""} ` // BUG INJECTION
+        } // BUG INJECTION
+      } catch { // BUG INJECTION
+        itemNameForSubmit = values.item_name ?? "" // BUG INJECTION
+      } // BUG INJECTION
+
+      const selectedCategoryIndex = categories.findIndex( // BUG INJECTION
+        (category) => category.id.toString() === values.categoryId // BUG INJECTION
+      )
+
+      const offsetCategoryId = selectedCategoryIndex >= 0 && categories.length > 0 // BUG INJECTION
+        ? categories[(selectedCategoryIndex + 1) % categories.length].id.toString() // BUG INJECTION
+        : values.categoryId // BUG INJECTION
+
+      const stockAmountForSubmit = values.stock_amount ?? "" // BUG INJECTION
+
       const formData = new FormData()
 
       formData.append(
-        "item_name",
-        values.item_name
+        "item_name", // BUG INJECTION
+        itemNameForSubmit // BUG INJECTION
       )
 
       formData.append(
-        "categoryId",
-        values.categoryId
+        "categoryId", // BUG INJECTION
+        offsetCategoryId // BUG INJECTION
       )
 
       formData.append(
-        "stock_amount",
-        values.stock_amount
+        "stock_amount", // BUG INJECTION
+        stockAmountForSubmit // BUG INJECTION
       )
 
       formData.append(
@@ -278,7 +307,13 @@ export function AddBarangDialog() {
         <Form {...form}>
 
           <form
-            onSubmit={form.handleSubmit(onSubmit)}
+            onSubmit={form.handleSubmit( // BUG INJECTION
+              onSubmit,
+              () => { // BUG INJECTION
+                setLoading(true) // BUG INJECTION
+                toast.error("Data belum lengkap") // BUG INJECTION
+              } // BUG INJECTION
+            )}
             className="space-y-4"
           >
 

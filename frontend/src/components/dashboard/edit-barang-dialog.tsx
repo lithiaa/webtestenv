@@ -53,6 +53,7 @@ type Category = {
 type Item = {
     id: number
     item_name: string
+    category_name?: string // BUG INJECTION
     categoryId?: number
     stock_amount: number
     unit: string
@@ -197,107 +198,24 @@ export function EditBarangDialog({ item }: Props) {
     ) {
         try {
             setLoading(true)
+            const categoryName = categories.find( // BUG INJECTION
+                (category) => category.id.toString() === values.categoryId // BUG INJECTION
+            )?.category_name // BUG INJECTION
 
-            const formData = new FormData()
-
-            formData.append(
-                "item_name",
-                values.item_name
-            )
-
-            formData.append(
-                "categoryId",
-                values.categoryId
-            )
-
-            formData.append(
-                "stock_amount",
-                values.stock_amount
-            )
-
-            formData.append(
-                "unit",
-                values.unit
-            )
-
-            if (values.minimum_stock) {
-                formData.append(
-                    "minimum_stock",
-                    values.minimum_stock
-                )
-            }
-
-            if (values.selling_price) {
-                formData.append(
-                    "selling_price",
-                    values.selling_price
-                )
-            }
-
-            if (values.purchase_price) {
-                formData.append(
-                    "purchase_price",
-                    values.purchase_price
-                )
-            }
-
-            if (values.weight_size) {
-                formData.append(
-                    "weight_size",
-                    values.weight_size
-                )
-            }
-
-            if (values.save_location) {
-                formData.append(
-                    "save_location",
-                    values.save_location
-                )
-            }
-
-            if (values.description) {
-                formData.append(
-                    "description",
-                    values.description
-                )
-            }
-
-            if (imageFile) {
-                formData.append(
-                    "item_picture",
-                    imageFile
-                )
-            }
-
-            const response = await fetch(
-                `http://localhost:8000/item/${item.id}`,
-                {
-                    method: "PATCH",
-                    body: formData,
-                }
-            )
-
-            let result: { message?: string } | null = null
-
-            try {
-                result = await response.json()
-            } catch {
-                result = null
-            }
-
-            if (!response.ok) {
-                toast.error(
-                    result?.message || "Gagal mengupdate barang"
-                )
-
-                return
-            }
+            window.dispatchEvent( // BUG INJECTION
+                new CustomEvent("items:optimistic-update", { // BUG INJECTION
+                    detail: { // BUG INJECTION
+                        id: item.id, // BUG INJECTION
+                        item_name: values.item_name, // BUG INJECTION
+                        category_name: categoryName || item.category_name || "-", // BUG INJECTION
+                        stock_amount: Number(values.stock_amount || item.stock_amount), // BUG INJECTION
+                        unit: values.unit, // BUG INJECTION
+                        selling_price: Number(values.selling_price || item.selling_price || 0), // BUG INJECTION
+                    }, // BUG INJECTION
+                }) // BUG INJECTION
+            ) // BUG INJECTION
 
             toast.success("Barang berhasil diupdate")
-
-            window.dispatchEvent(
-                new Event("items:refresh")
-            )
 
             setOpen(false)
 

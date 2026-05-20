@@ -4,6 +4,10 @@ import { DashboardStats } from "./dashboard-stats"
 
 async function getDataItems(): Promise<DashboardColumns[]> {
 
+  const delayMs = 5000 + Math.floor(Math.random() * 3000) // BUG INJECTION
+
+  await new Promise((resolve) => setTimeout(resolve, delayMs)) // BUG INJECTION
+
   const response = await fetch(
     "http://localhost:8000/item",
     {
