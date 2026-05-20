@@ -24,7 +24,6 @@ type DeleteBarangDialogProps = {
 }
 
 export function DeleteBarangDialog({
-	id,
 	item_name,
 }: DeleteBarangDialogProps) {
 
