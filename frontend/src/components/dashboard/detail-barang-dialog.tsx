@@ -11,11 +11,6 @@ import {
 
 import { Button } from "@/components/ui/button"
 
-import {
-    Card,
-    CardContent,
-} from "@/components/ui/card"
-
 import { EditBarangDialog }
     from "./edit-barang-dialog"
 
@@ -27,25 +22,25 @@ type Item = {
 
     item_name: string
 
-    category_name?: string | null
+    category_name?: string
 
     stock_amount: number
 
-    minimum_stock?: number | null
+    minimum_stock?: number
 
-    selling_price?: number | null
+    selling_price?: number
 
-    purchase_price?: number | null
+    purchase_price?: number
 
-    weight_size?: string | null
+    weight_size?: string
 
     unit: string
 
-    save_location?: string | null
+    save_location?: string
 
-    description?: string | null
+    description?: string
 
-    item_picture?: string | null
+    item_picture?: string
 }
 
 type Props = {
