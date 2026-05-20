@@ -20,6 +20,8 @@ model Category {
   createdAt     DateTime @default(now())
 
   items         Item[]
+
+  @@map("category")
 }
 
 model Item {
@@ -43,4 +45,6 @@ model Item {
   item_picture   String?
 
   createdAt      DateTime @default(now())
+  
+  @@map("item")
 }

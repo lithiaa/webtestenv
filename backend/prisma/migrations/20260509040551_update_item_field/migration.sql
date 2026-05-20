@@ -5,6 +5,6 @@
 
 */
 -- AlterTable
-ALTER TABLE `item` ADD COLUMN `unit` VARCHAR(191) NOT NULL,
+ALTER TABLE `Item` ADD COLUMN `unit` VARCHAR(191) NOT NULL,
     MODIFY `selling_price` DOUBLE NULL,
     MODIFY `purchase_price` DOUBLE NULL;
