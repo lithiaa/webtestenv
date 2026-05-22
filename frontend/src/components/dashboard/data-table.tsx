@@ -22,6 +22,7 @@ import {
 
 import { AddBarangDialog } from "./add-barang-dialog"
 import { Input } from "@/components/ui/input"
+import { apiBaseUrl } from "@/lib/utils"
 
 import {
   Select,
@@ -88,7 +89,7 @@ export function DataTable<TData, TValue>({
     async function fetchCategories() {
       try {
         const response = await fetch(
-          "http://localhost:8000/categories"
+          `${apiBaseUrl}/categories`
         )
 
         const data = await response.json()
@@ -106,7 +107,7 @@ export function DataTable<TData, TValue>({
   const fetchItems = useCallback(async () => {
     try {
       const response = await fetch(
-        `http://localhost:8000/item?page=${page}&limit=${limit}&sortBy=${sortBy}&order=${order}&search=${search}&categoryId=${selectedCategory}`
+        `${apiBaseUrl}/item?page=${page}&limit=${limit}&sortBy=${sortBy}&order=${order}&search=${search}&categoryId=${selectedCategory}`
       )
 
       const result =

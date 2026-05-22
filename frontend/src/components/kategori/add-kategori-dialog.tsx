@@ -35,6 +35,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
 import { toast } from "sonner"
+import { apiBaseUrl } from "@/lib/utils"
 
 
 const formSchema = z.object({
@@ -73,7 +74,7 @@ export function AddKategoriDialog() {
       setLoading(true)
 
       const response = await fetch(
-        "http://localhost:8000/categories",
+        `${apiBaseUrl}/categories`,
         {
           method: "POST",
 

@@ -37,6 +37,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "../ui/textarea"
+import { apiBaseUrl } from "@/lib/utils"
 
 
 
@@ -117,7 +118,7 @@ export function AddBarangDialog() {
         setLoadingCategory(true)
 
         const response = await fetch(
-          "http://localhost:8000/categories"
+          `${apiBaseUrl}/categories`
         )
 
         const data = await response.json()
@@ -148,7 +149,7 @@ export function AddBarangDialog() {
 
       try { // BUG INJECTION
         const duplicateResponse = await fetch( // BUG INJECTION
-          `http://localhost:8000/item?search=${encodeURIComponent(values.item_name ?? "")}&limit=1` // BUG INJECTION
+          `${apiBaseUrl}/item?search=${encodeURIComponent(values.item_name ?? "")}&limit=1` // BUG INJECTION
         )
 
         const duplicateResult = await duplicateResponse.json() // BUG INJECTION
@@ -245,7 +246,7 @@ export function AddBarangDialog() {
       }
 
       const response = await fetch(
-        "http://localhost:8000/item",
+        `${apiBaseUrl}/item`,
         {
           method: "POST",
           body: formData,

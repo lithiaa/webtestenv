@@ -36,6 +36,7 @@ import {
 } from "@/components/ui/pagination"
 
 import { ArrowUpDown, ArrowUp, ArrowDown } from "lucide-react"
+import { apiBaseUrl } from "@/lib/utils"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -77,7 +78,7 @@ export function DataTable<TData, TValue>({
   const fetchItems = useCallback(async () => {
     try {
       const response = await fetch(
-        `http://localhost:8000/categories?page=${page}&limit=${limit}&sortBy=${sortBy}&order=${order}&search=${search}`
+        `${apiBaseUrl}/categories?page=${page}&limit=${limit}&sortBy=${sortBy}&order=${order}&search=${search}`
       )
 
       const result =

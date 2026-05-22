@@ -1,9 +1,10 @@
 import { columns, KategoriColumns } from "./columns"
 import { DataTable } from "./data-table"
+import { apiBaseUrl } from "@/lib/utils"
 
 async function getData(): Promise<KategoriColumns[]> {
   const response = await fetch(
-    "http://localhost:8000/categories",
+    `${apiBaseUrl}/categories`,
     {
       cache: "no-store",
     }

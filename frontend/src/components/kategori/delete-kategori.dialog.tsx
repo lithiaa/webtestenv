@@ -18,6 +18,7 @@ import { toast } from "sonner"
 
 
 import { useState } from "react"
+import { apiBaseUrl } from "@/lib/utils"
 
 type DeleteKategoriDialogProps = {
   id: number
@@ -40,7 +41,7 @@ export function DeleteKategoriDialog({
       setLoading(true)
 
       const response = await fetch(
-        `http://localhost:8000/categories/${id}`,
+        `${apiBaseUrl}/categories/${id}`,
         {
           method: "DELETE",
         }

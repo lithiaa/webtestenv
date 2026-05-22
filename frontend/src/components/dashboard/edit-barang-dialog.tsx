@@ -44,6 +44,7 @@ import {
 } from "@/components/ui/select"
 
 import { Textarea } from "@/components/ui/textarea"
+import { apiBaseUrl } from "@/lib/utils"
 
 type Category = {
     id: number
@@ -165,7 +166,7 @@ export function EditBarangDialog({ item }: Props) {
         setImageFile(null)
         setImagePreviewUrl(
             item.item_picture
-                ? `http://localhost:8000/uploads/items/${item.item_picture}`
+                ? `${apiBaseUrl}/uploads/items/${item.item_picture}`
                 : null
         )
     }, [form, item, open])
@@ -176,7 +177,7 @@ export function EditBarangDialog({ item }: Props) {
                 setLoadingCategory(true)
 
                 const response = await fetch(
-                    "http://localhost:8000/categories"
+                    `${apiBaseUrl}/categories`
                 )
 
                 const data = await response.json()

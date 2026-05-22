@@ -16,6 +16,7 @@ import { EditBarangDialog }
 
 import { DeleteBarangDialog }
     from "./delete-barang-dialog"
+import { apiBaseUrl } from "@/lib/utils"
 
 type Item = {
     id: number
@@ -90,7 +91,7 @@ export function DetailBarangDialog({
                             <div className="relative aspect-square w-full overflow-hidden rounded-2xl border bg-muted">
                                 {item.item_picture ? (
                                     <img
-                                        src={`http://localhost:8000/uploads/items/${item.item_picture}`}
+                                        src={`${apiBaseUrl}/uploads/items/${item.item_picture}`}
                                         alt={item.item_name}
                                         className="h-full w-full object-cover"
                                     />

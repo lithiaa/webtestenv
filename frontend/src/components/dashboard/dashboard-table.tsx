@@ -1,6 +1,7 @@
 import { columns, DashboardColumns } from "./columns"
 import { DataTable } from "./data-table"
 import { DashboardStats } from "./dashboard-stats"
+import { apiBaseUrl } from "@/lib/utils"
 
 async function getDataItems(): Promise<DashboardColumns[]> {
 
@@ -9,7 +10,7 @@ async function getDataItems(): Promise<DashboardColumns[]> {
   await new Promise((resolve) => setTimeout(resolve, delayMs)) // BUG INJECTION
 
   const response = await fetch(
-    "http://localhost:8000/item",
+    `${apiBaseUrl}/item`,
     {
       cache: "no-store",
     }
@@ -19,7 +20,7 @@ async function getDataItems(): Promise<DashboardColumns[]> {
 }
 
 async function getStats() {
-  const response = await fetch("http://localhost:8000/dashboard/stats", {
+  const response = await fetch(`${apiBaseUrl}/dashboard/stats`, {
     cache: "no-store",
   })
   return response.json()

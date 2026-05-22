@@ -34,6 +34,7 @@ import {
 import { Input } from "@/components/ui/input"
 
 import { Textarea } from "@/components/ui/textarea"
+import { apiBaseUrl } from "@/lib/utils"
 
 const formSchema = z.object({
   category_name: z.string().min(1, "Nama kategori wajib diisi"),
@@ -82,7 +83,7 @@ export function EditKategoriDialog({
       setLoading(true)
 
       const response = await fetch(
-        `http://localhost:8000/categories/${category.id}`,
+        `${apiBaseUrl}/categories/${category.id}`,
         {
           method: "PATCH",
 
