@@ -28,11 +28,10 @@ PENTING:
 Implementasikan 10 bug berikut:
 
 ==================================================
-BUG 1 — Required Validation Tidak Berjalan
+BUG 1 — Required Validation Tidak Berjalan (OK)
 ==================================================
 
 Pada form tambah barang:
-- field nama barang tetap bisa disubmit meskipun kosong
 - field stok tetap bisa disubmit meskipun kosong
 
 Expected normal:
@@ -42,7 +41,7 @@ Bug:
 - data tetap tersimpan
 
 ==================================================
-BUG 2 — Stok Negatif Diperbolehkan
+BUG 2 — Stok Negatif Diperbolehkan (OK)
 ==================================================
 
 Izinkan input stok:
@@ -54,7 +53,7 @@ Bug:
 - backend tetap menerima data
 
 ==================================================
-BUG 3 — Delete Barang Gagal Tetapi Toast Sukses
+BUG 3 — Delete Barang Gagal Tetapi Toast Sukses (OK)
 ==================================================
 
 Saat tombol delete ditekan:
@@ -65,7 +64,7 @@ Pastikan:
 - setelah refresh data masih ada
 
 ==================================================
-BUG 4 — Edit Barang Tidak Persist Setelah Refresh
+BUG 4 — Edit Barang Tidak Persist Setelah Refresh (OK)
 ==================================================
 
 Saat edit barang:
@@ -76,14 +75,14 @@ Atau:
 - update hanya di state frontend sementara
 
 ==================================================
-BUG 5 — Duplicate Nama Barang Diperbolehkan
+BUG 5 — Duplicate Nama Barang Diperbolehkan (OK)
 ==================================================
 
 Hilangkan validasi unique:
 - nama barang boleh sama persis
 
 ==================================================
-BUG 6 — Toast Notification Hilang Terlalu Cepat
+BUG 6 — Toast Notification Hilang Terlalu Cepat (OK)
 ==================================================
 
 Toast sukses/error:
@@ -93,7 +92,7 @@ Tujuan:
 - memicu flaky automation test pada Katalon
 
 ==================================================
-BUG 7 — Delay Loading Data Table
+BUG 7 — Delay Loading Data Table (OK)
 ==================================================
 
 Tambahkan artificial delay:
@@ -104,7 +103,7 @@ Tujuan:
 - memicu timeout/synchronization issue
 
 ==================================================
-BUG 8 — Tombol Simpan Tetap Disabled Setelah Error
+BUG 8 — Tombol Simpan Tetap Disabled Setelah Error (OK)
 ==================================================
 
 Saat submit invalid:
@@ -115,7 +114,7 @@ Bug:
 - tombol tetap disabled
 
 ==================================================
-BUG 9 — Kategori Barang Salah Tersimpan
+BUG 9 — Kategori Barang Salah Tersimpan (OK)
 ==================================================
 
 Saat user memilih kategori:
@@ -131,7 +130,7 @@ Contoh:
 - yang tersimpan index 2
 
 ==================================================
-BUG 10 — Search Bersifat Case Sensitive
+BUG 10 — Search Bersifat Case Sensitive [OK]
 ==================================================
 
 Bug:
