@@ -205,6 +205,7 @@ export function DataTable<TData, TValue>({
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
 
           <Input
+            id="dashboard-search-input"
             placeholder="Cari barang..."
             value={search}
             onChange={(event) => {
@@ -226,20 +227,24 @@ export function DataTable<TData, TValue>({
             }
             }
           >
-            <SelectTrigger className="w-[200px]">
+            <SelectTrigger
+              id="dashboard-category-filter"
+              className="w-[200px]"
+            >
               <SlidersHorizontal />
               <SelectValue placeholder="Semua Kategori" />
             </SelectTrigger>
 
-            <SelectContent>
+            <SelectContent id="dashboard-category-filter-options">
 
-              <SelectItem value="all">
+              <SelectItem id="dashboard-category-filter-option-all" value="all">
                 Semua Kategori
               </SelectItem>
 
               {categories?.map((category) => (
 
                 <SelectItem
+                  id={`dashboard-category-filter-option-${category.id}`}
                   key={category.id}
                   value={category.id.toString()}
                 >
@@ -274,6 +279,7 @@ export function DataTable<TData, TValue>({
 
                      {sortable ? (
                       <button
+                        id={`dashboard-sort-${header.column.id}`}
                         onClick={() => {
 
                           const columnId = header.column.id
@@ -331,10 +337,14 @@ export function DataTable<TData, TValue>({
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
+                  id={`dashboard-row-${String((row.original as { id?: number | string })?.id ?? row.id)}`}
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell
+                      key={cell.id}
+                      id={`dashboard-cell-${String((row.original as { id?: number | string })?.id ?? row.id)}-${cell.column.id}`}
+                    >
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
@@ -379,6 +389,7 @@ export function DataTable<TData, TValue>({
               {/* PREVIOUS */}
               <PaginationItem>
                 <PaginationPrevious
+                  id="dashboard-pagination-previous"
                   href="#"
                   onClick={(event) => {
                     event.preventDefault()
@@ -400,6 +411,7 @@ export function DataTable<TData, TValue>({
                 (_, index) => (
                   <PaginationItem key={index}>
                     <PaginationLink
+                      id={`dashboard-pagination-page-${index + 1}`}
                       isActive={page === index + 1}
                       href="#"
                       onClick={(event) => {
@@ -417,6 +429,7 @@ export function DataTable<TData, TValue>({
               {/* NEXT */}
               <PaginationItem>
                 <PaginationNext
+                  id="dashboard-pagination-next"
                   href="#"
                   onClick={(event) => {
                     event.preventDefault()

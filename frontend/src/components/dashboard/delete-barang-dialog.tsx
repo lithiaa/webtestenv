@@ -24,6 +24,7 @@ type DeleteBarangDialogProps = {
 }
 
 export function DeleteBarangDialog({
+    id,
 	item_name,
 }: DeleteBarangDialogProps) {
 
@@ -60,6 +61,7 @@ export function DeleteBarangDialog({
 		<AlertDialog>
 			<AlertDialogTrigger asChild>
 				<Button
+					id={`delete-item-open-dialog-${id}`}
 					variant="destructive"
 					size="sm"
 				>
@@ -86,11 +88,12 @@ export function DeleteBarangDialog({
 				</AlertDialogHeader>
 
 				<AlertDialogFooter>
-					<AlertDialogCancel>
+					<AlertDialogCancel id={`delete-item-cancel-${id}`}>
 						Batal
 					</AlertDialogCancel>
 
 					<AlertDialogAction
+						id={`delete-item-confirm-${id}`}
 						onClick={handleDelete}
 						disabled={loading}
 					>

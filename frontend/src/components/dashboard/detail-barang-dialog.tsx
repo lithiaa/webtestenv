@@ -58,6 +58,7 @@ export function DetailBarangDialog({
             <DialogTrigger asChild>
 
                 <Button
+                    id={`detail-item-open-dialog-${item.id}`}
                     variant="outline"
                     size="sm"
                 >

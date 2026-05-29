@@ -289,7 +289,7 @@ export function AddBarangDialog() {
     >
 
       <DialogTrigger asChild>
-        <Button>
+        <Button id="add-item-open-dialog">
           <Plus />
           Tambah Barang
         </Button>
@@ -327,7 +327,7 @@ export function AddBarangDialog() {
                 <FormControl>
                   <div className="text-center">
                     <Input
-                      id="item-picture"
+                      id="add-item-picture"
                       type="file"
                       accept="image/*"
                       className="hidden"
@@ -349,7 +349,7 @@ export function AddBarangDialog() {
                     />
 
                     <label
-                      htmlFor="item-picture"
+                      htmlFor="add-item-picture"
                       className="relative flex aspect-square w-full cursor-pointer items-center justify-center overflow-hidden rounded-2xl border border-dashed border-input bg-muted text-muted-foreground transition hover:text-foreground"
                     >
                       {imagePreviewUrl ? (
@@ -436,11 +436,12 @@ export function AddBarangDialog() {
                             </SelectTrigger>
                           </FormControl>
 
-                          <SelectContent>
+                          <SelectContent id="add-item-category-options">
 
                             {categories.map((category) => (
 
                               <SelectItem
+                                id={`add-item-category-option-${category.id}`}
                                 key={category.id}
                                 value={category.id.toString()}
                               >
@@ -644,6 +645,7 @@ export function AddBarangDialog() {
 
             {/* BUTTON */}
             <Button
+              id="add-item-submit"
               type="submit"
               className="w-full"
               disabled={loading}
