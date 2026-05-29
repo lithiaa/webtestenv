@@ -388,12 +388,13 @@ export function AddBarangDialog() {
                   name="item_name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>
+                      <FormLabel htmlFor="add-item-name">
                         Nama Barang *
                       </FormLabel>
 
                       <FormControl>
                         <Input
+                          id="add-item-name"
                           placeholder="Masukkan nama barang"
                           {...field}
                         />
@@ -412,7 +413,7 @@ export function AddBarangDialog() {
                     render={({ field }) => (
                       <FormItem>
 
-                        <FormLabel>
+                        <FormLabel htmlFor="add-item-category">
                           Kategori *
                         </FormLabel>
 
@@ -422,7 +423,7 @@ export function AddBarangDialog() {
                         >
 
                           <FormControl>
-                            <SelectTrigger>
+                            <SelectTrigger id="add-item-category">
 
                               <SelectValue
                                 placeholder={
@@ -463,12 +464,13 @@ export function AddBarangDialog() {
                     name="unit"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>
+                        <FormLabel htmlFor="add-item-unit">
                           Satuan *
                         </FormLabel>
 
                         <FormControl>
                           <Input
+                            id="add-item-unit"
                             placeholder="Contoh: pcs"
                             {...field}
                           />
@@ -486,12 +488,13 @@ export function AddBarangDialog() {
                     name="stock_amount"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>
+                        <FormLabel htmlFor="add-item-stock">
                           Jumlah Stok *
                         </FormLabel>
 
                         <FormControl>
                           <Input
+                            id="add-item-stock"
                             type="number"
                             placeholder="Masukkan jumlah stok"
                             {...field}
@@ -507,11 +510,12 @@ export function AddBarangDialog() {
                     name="minimum_stock"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>
+                        <FormLabel htmlFor="add-item-min-stock">
                           Stok Minimum
                         </FormLabel>
                         <FormControl>
                           <Input
+                            id="add-item-min-stock"
                             type="number"
                             placeholder="Masukkan stok minimum"
                             {...field}
@@ -532,12 +536,13 @@ export function AddBarangDialog() {
                 name="selling_price"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>
+                    <FormLabel htmlFor="add-item-selling-price">
                       Harga Jual
                     </FormLabel>
 
                     <FormControl>
                       <Input
+                        id="add-item-selling-price"
                         type="number"
                         placeholder="Masukkan harga"
                         {...field}
@@ -554,11 +559,12 @@ export function AddBarangDialog() {
                 name="purchase_price"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>
+                    <FormLabel htmlFor="add-item-purchase-price">
                       Harga Beli
                     </FormLabel>
                     <FormControl>
                       <Input
+                        id="add-item-purchase-price"
                         type="number"
                         placeholder="Masukkan harga beli"
                         {...field}
@@ -578,11 +584,12 @@ export function AddBarangDialog() {
                 name="weight_size"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>
+                    <FormLabel htmlFor="add-item-weight-size">
                       Ukuran/Berat
                     </FormLabel>
                     <FormControl>
                       <Input
+                        id="add-item-weight-size"
                         placeholder="Contoh: 500g atau 30x20x10cm"
                         {...field}
                       />
@@ -596,11 +603,12 @@ export function AddBarangDialog() {
                 name="save_location"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>
+                    <FormLabel htmlFor="add-item-save-location">
                       Lokasi Penyimpanan
                     </FormLabel>
                     <FormControl>
                       <Input
+                        id="add-item-save-location"
                         placeholder="Contoh: Rak A1"
                         {...field}
                       />
@@ -618,11 +626,12 @@ export function AddBarangDialog() {
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>
+                  <FormLabel htmlFor="add-item-description">
                     Deskripsi
                   </FormLabel>
                   <FormControl>
                     <Textarea
+                      id="add-item-description"
                       placeholder="Masukkan deskripsi barang"
                       className="resize-none"
                       {...field}

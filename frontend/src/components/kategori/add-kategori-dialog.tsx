@@ -168,12 +168,13 @@ export function AddKategoriDialog() {
               render={({ field }) => (
                 <FormItem>
 
-                  <FormLabel>
+                  <FormLabel htmlFor="add-category-name">
                     Nama Kategori *
                   </FormLabel>
 
                   <FormControl>
                     <Input
+                      id="add-category-name"
                       placeholder="Masukkan nama kategori"
                       {...field}
                     />
@@ -193,12 +194,13 @@ export function AddKategoriDialog() {
               render={({ field }) => (
                 <FormItem>
 
-                  <FormLabel>
+                  <FormLabel htmlFor="add-category-description">
                     Deskripsi
                   </FormLabel>
 
                   <FormControl>
                     <Textarea
+                      id="add-category-description"
                       placeholder="Masukkan deskripsi kategori"
                       className="resize-none"
                       {...field}

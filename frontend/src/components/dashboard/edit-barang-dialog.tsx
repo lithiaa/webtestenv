@@ -254,7 +254,7 @@ export function EditBarangDialog({ item }: Props) {
                                 <FormControl>
                                     <div className="text-center">
                                         <Input
-                                            id={`item-picture-${item.id}`}
+                                            id="edit-item-picture"
                                             type="file"
                                             accept="image/*"
                                             className="hidden"
@@ -282,7 +282,7 @@ export function EditBarangDialog({ item }: Props) {
                                         />
 
                                         <label
-                                            htmlFor={`item-picture-${item.id}`}
+                                            htmlFor="edit-item-picture"
                                             className="relative flex aspect-square w-full cursor-pointer items-center justify-center overflow-hidden rounded-2xl border border-dashed border-input bg-muted text-muted-foreground transition hover:text-foreground"
                                         >
                                             {imagePreviewUrl ? (
@@ -316,9 +316,10 @@ export function EditBarangDialog({ item }: Props) {
                                     name="item_name"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Nama Barang *</FormLabel>
+                                            <FormLabel htmlFor="edit-item-name">Nama Barang *</FormLabel>
                                             <FormControl>
                                                 <Input
+                                                    id="edit-item-name"
                                                     placeholder="Masukkan nama barang"
                                                     {...field}
                                                 />
@@ -335,7 +336,7 @@ export function EditBarangDialog({ item }: Props) {
                                             return (
                                                 <FormItem>
 
-                                                    <FormLabel>
+                                                    <FormLabel htmlFor="edit-item-category">
                                                         Kategori *
                                                     </FormLabel>
 
@@ -347,7 +348,7 @@ export function EditBarangDialog({ item }: Props) {
 
                                                         <FormControl>
 
-                                                            <SelectTrigger>
+                                                            <SelectTrigger id="edit-item-category">
 
                                                                 <SelectValue
                                                                     placeholder={
@@ -389,9 +390,10 @@ export function EditBarangDialog({ item }: Props) {
                                         name="unit"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel>Satuan *</FormLabel>
+                                                <FormLabel htmlFor="edit-item-unit">Satuan *</FormLabel>
                                                 <FormControl>
                                                     <Input
+                                                        id="edit-item-unit"
                                                         placeholder="Contoh: pcs"
                                                         {...field}
                                                     />
@@ -407,9 +409,10 @@ export function EditBarangDialog({ item }: Props) {
                                         name="stock_amount"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel>Jumlah Stok *</FormLabel>
+                                                <FormLabel htmlFor="edit-item-stock">Jumlah Stok *</FormLabel>
                                                 <FormControl>
                                                     <Input
+                                                        id="edit-item-stock"
                                                         type="number"
                                                         placeholder="Masukkan jumlah stok"
                                                         {...field}
@@ -424,9 +427,10 @@ export function EditBarangDialog({ item }: Props) {
                                         name="minimum_stock"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel>Stok Minimum</FormLabel>
+                                                <FormLabel htmlFor="edit-item-min-stock">Stok Minimum</FormLabel>
                                                 <FormControl>
                                                     <Input
+                                                        id="edit-item-min-stock"
                                                         type="number"
                                                         placeholder="Masukkan stok minimum"
                                                         {...field}
@@ -447,9 +451,10 @@ export function EditBarangDialog({ item }: Props) {
                                 name="selling_price"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Harga Jual</FormLabel>
+                                        <FormLabel htmlFor="edit-item-selling-price">Harga Jual</FormLabel>
                                         <FormControl>
                                             <Input
+                                                id="edit-item-selling-price"
                                                 type="number"
                                                 placeholder="Masukkan harga"
                                                 {...field}
@@ -464,9 +469,10 @@ export function EditBarangDialog({ item }: Props) {
                                 name="purchase_price"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Harga Beli</FormLabel>
+                                        <FormLabel htmlFor="edit-item-purchase-price">Harga Beli</FormLabel>
                                         <FormControl>
                                             <Input
+                                                id="edit-item-purchase-price"
                                                 type="number"
                                                 placeholder="Masukkan harga beli"
                                                 {...field}
@@ -484,9 +490,10 @@ export function EditBarangDialog({ item }: Props) {
                                 name="weight_size"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Ukuran/Berat</FormLabel>
+                                        <FormLabel htmlFor="edit-item-weight-size">Ukuran/Berat</FormLabel>
                                         <FormControl>
                                             <Input
+                                                id="edit-item-weight-size"
                                                 placeholder="Contoh: 500g atau 30x20x10cm"
                                                 {...field}
                                             />
@@ -500,9 +507,10 @@ export function EditBarangDialog({ item }: Props) {
                             name="save_location"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Lokasi Penyimpanan</FormLabel>
+                                    <FormLabel htmlFor="edit-item-save-location">Lokasi Penyimpanan</FormLabel>
                                     <FormControl>
                                         <Input
+                                            id="edit-item-save-location"
                                             placeholder="Contoh: Rak A1"
                                             {...field}
                                         />
@@ -518,9 +526,10 @@ export function EditBarangDialog({ item }: Props) {
                             name="description"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Deskripsi</FormLabel>
+                                    <FormLabel htmlFor="edit-item-description">Deskripsi</FormLabel>
                                     <FormControl>
                                         <Textarea
+                                            id="edit-item-description"
                                             placeholder="Masukkan deskripsi barang"
                                             className="resize-none"
                                             {...field}

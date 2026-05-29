@@ -166,12 +166,12 @@ export function EditKategoriDialog({
               render={({ field }) => (
                 <FormItem>
 
-                  <FormLabel>
+                  <FormLabel htmlFor="edit-category-name">
                     Nama Kategori
                   </FormLabel>
 
                   <FormControl>
-                    <Input {...field} />
+                    <Input id="edit-category-name" {...field} />
                   </FormControl>
 
                   <FormMessage />
@@ -186,14 +186,12 @@ export function EditKategoriDialog({
               render={({ field }) => (
                 <FormItem>
 
-                  <FormLabel>
+                  <FormLabel htmlFor="edit-category-description">
                     Deskripsi
                   </FormLabel>
 
                   <FormControl>
-                    <Textarea
-                      {...field}
-                    />
+                    <Textarea id="edit-category-description" {...field} />
                   </FormControl>
 
                   <FormMessage />
