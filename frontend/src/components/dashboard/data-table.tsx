@@ -334,16 +334,16 @@ export function DataTable<TData, TValue>({
 
           <TableBody>
             {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
+              table.getRowModel().rows.map((row, rowIndex) => (
                 <TableRow
                   key={row.id}
-                  id={`dashboard-row-${String((row.original as { id?: number | string })?.id ?? row.id)}`}
+                  id={`dashboard-row-${rowIndex + 1}`}
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
                       key={cell.id}
-                      id={`dashboard-cell-${String((row.original as { id?: number | string })?.id ?? row.id)}-${cell.column.id}`}
+                      id={`dashboard-cell-${rowIndex + 1}-${cell.column.id}`}
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
