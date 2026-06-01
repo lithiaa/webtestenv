@@ -10,26 +10,26 @@ CREATE TABLE `User` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Category` (
+CREATE TABLE `category` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `category_name` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
-    UNIQUE INDEX `Category_category_name_key`(`category_name`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `Item` (
+CREATE TABLE `item` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `item_name` VARCHAR(191) NOT NULL,
-    `categoryId` INTEGER NOT NULL,
+    `categoryId` INTEGER NULL,
     `stock_amount` INTEGER NOT NULL,
     `minimum_stock` INTEGER NULL,
-    `selling_price` DOUBLE NOT NULL,
-    `purchase_price` DOUBLE NOT NULL,
+    `selling_price` DOUBLE NULL,
+    `purchase_price` DOUBLE NULL,
     `weight_size` VARCHAR(191) NULL,
+    `unit` VARCHAR(191) NOT NULL,
     `save_location` VARCHAR(191) NULL,
     `description` VARCHAR(191) NULL,
     `item_picture` VARCHAR(191) NULL,
@@ -39,4 +39,4 @@ CREATE TABLE `Item` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `Item` ADD CONSTRAINT `Item_categoryId_fkey` FOREIGN KEY (`categoryId`) REFERENCES `Category`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `item` ADD CONSTRAINT `item_categoryId_fkey` FOREIGN KEY (`categoryId`) REFERENCES `category`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
