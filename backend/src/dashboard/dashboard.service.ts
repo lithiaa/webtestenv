@@ -19,7 +19,7 @@ export class DashboardService {
 
     const stokMenipis = await this.prisma.$queryRaw<Array<{ count: bigint }>>`
       SELECT COUNT(*) as count
-      FROM Item
+      FROM item
       WHERE
         minimum_stock IS NOT NULL
         AND stock_amount > 0
